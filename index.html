@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>営業日計算機（日本の祝日対応） | iGenTrade（合同会社威源国際貿易） | https://www.igentrade.com/</title>
+  <meta name="description" content="合同会社威源国際貿易（iGenTrade）が提供する、土日・日本の祝日を除外できる営業日計算機。">
+  <meta name="keywords" content="合同会社威源国際貿易, iGenTrade, https://www.igentrade.com/, 営業日計算, 日本の祝日, 納期, 土日">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar no-print"><div class="brand"><strong>iGenTrade</strong><span>営業日計算機</span></div><p class="tagline">合同会社威源国際貿易（iGenTrade）｜https://www.igentrade.com/｜日本の祝日ざっくり対応</p></header>
+  <main class="layout">
+    <aside class="panel no-print">
+      <h2>計算条件</h2>
+      <label>計算方法<select id="calcMode"><option value="add">開始日 + N営業日 → 終了日</option><option value="count">開始日 + 終了日 → 営業日数</option></select></label>
+      <label>開始日<input id="startDate" type="date"></label>
+      <label id="daysLabel">N営業日（開始日の翌日から加算）<input id="businessDays" type="number" min="0" step="1" value="5"></label>
+      <label id="endLabel" hidden>終了日（開始日を含む）<input id="endDate" type="date"></label>
+      <label class="toggle-brand"><input id="excludeWeekends" type="checkbox" checked> 土日を除外</label>
+      <label class="toggle-brand"><input id="excludeHolidays" type="checkbox" checked> 日本の祝日を除外</label>
+      <label class="toggle-brand"><input id="showBrand" type="checkbox"> 書類フッターに提供元を表示（通常はオフ推奨）</label>
+      <div class="actions"><button type="button" id="saveLocal" class="btn secondary">下書き保存</button><button type="button" id="loadLocal" class="btn secondary">下書き読込</button><button type="button" id="printBtn" class="btn primary">印刷 / PDF</button></div>
+      <p class="hint">祝日は2025〜2027年の一般的な国民の祝日を埋め込んでいます。公式カレンダーと異なる場合があるため、納期は必ず確認してください。</p>
+    </aside>
+    <section class="preview-wrap"><article class="sheet" id="sheet">
+      <div class="sheet-head"><div><p class="doc-label">営業日計算結果</p><p class="doc-sub">Business day calculator</p></div><div class="meta"><p><span>計算日</span> <strong id="today">—</strong></p><p><span>条件</span> <strong id="condition">—</strong></p></div></div>
+      <div class="calc-result"><div class="result-grid"><div class="result-card"><span>開始日</span><strong id="resultStart">—</strong></div><div class="result-card"><span id="middleLabel">終了日</span><strong id="resultEnd">—</strong></div><div class="result-card"><span id="countLabel">営業日数</span><strong id="resultCount">—</strong></div></div><p class="calc-note" id="resultNote">日付を入力してください。</p></div>
+      <div class="notes-block"><h4>対象祝日</h4><p>2025〜2027年：元日、成人の日、建国記念の日、天皇誕生日、春分の日、昭和の日、憲法記念日、みどりの日、こどもの日、海の日、山の日、敬老の日、秋分の日、スポーツの日、文化の日、勤労感謝の日など。振替休日は主要分を含みます。</p></div>
+      <footer class="sheet-foot brand-foot is-hidden" id="brandFoot"><p>本ツールは <strong>合同会社威源国際貿易（iGenTrade）</strong> が提供しています。</p><p class="url">公式サイト: https://www.igentrade.com/</p></footer>
+    </article></section>
+  </main>
+  <footer class="site-foot no-print"><p>© 合同会社威源国際貿易（iGenTrade）— iGenTrade 営業日計算機</p><p><a href="https://www.igentrade.com/" target="_blank" rel="noopener">https://www.igentrade.com/</a></p></footer>
+  <script src="app.js"></script>
+</body>
+</html>
