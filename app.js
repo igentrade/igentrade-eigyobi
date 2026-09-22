@@ -26,8 +26,11 @@
   }
   function data() { return { mode: $("calcMode").value, start: $("startDate").value, days: $("businessDays").value, end: $("endDate").value, weekends: $("excludeWeekends").checked, holidays: $("excludeHolidays").checked }; }
   function load(d) { $("calcMode").value = d.mode || "add"; $("startDate").value = d.start || ""; $("businessDays").value = d.days ?? 5; $("endDate").value = d.end || ""; $("excludeWeekends").checked = d.weekends !== false; $("excludeHolidays").checked = d.holidays !== false; updateMode(); }
-  ["startDate", "businessDays", "endDate", "excludeWeekends", "excludeHolidays"].forEach((id) => $(id).addEventListener("input", calculate)); $("calcMode").addEventListener("change", updateMode);
-  $("showBrand").addEventListener("change", () => $("brandFoot").classList.toggle("is-hidden", !$("showBrand").checked)); $("printBtn").addEventListener("click", () => window.print());
+  let statsReady = false;
+  function markTry() { if (statsReady && typeof window.iGenTradeRecordTry === "function") window.iGenTradeRecordTry(); }
+  ["startDate", "businessDays", "endDate", "excludeWeekends", "excludeHolidays"].forEach((id) => $(id).addEventListener("input", () => { markTry(); calculate(); }));
+  $("calcMode").addEventListener("change", () => { markTry(); updateMode(); });
+  $("showBrand").addEventListener("change", () => $("brandFoot").classList.toggle("is-hidden", !$("showBrand").checked)); $("printBtn").addEventListener("click", () => { markTry(); window.print(); });
   $("saveLocal").addEventListener("click", () => { localStorage.setItem(KEY, JSON.stringify(data())); alert("下書きをこのブラウザに保存しました。"); }); $("loadLocal").addEventListener("click", () => { const raw = localStorage.getItem(KEY); if (!raw) return alert("保存された下書きがありません。"); try { load(JSON.parse(raw)); } catch (_) { alert("下書きを読み込めませんでした。"); } });
-  const now = new Date(); $("startDate").value = isoDate(now); const end = new Date(now); end.setDate(end.getDate() + 7); $("endDate").value = isoDate(end); updateMode();
+  const now = new Date(); $("startDate").value = isoDate(now); const end = new Date(now); end.setDate(end.getDate() + 7); $("endDate").value = isoDate(end); updateMode(); statsReady = true;
 })();
