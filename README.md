@@ -15,12 +15,14 @@
 
 祝日データは中小企業の計画用の概算です。公式カレンダー・自治体の休日・会社独自休日と異なる場合があるため、重要な納期では最新の公的情報を確認してください。
 
-## 関連ツール
 
-- [igentrade-seikyu](../igentrade-seikyu/)（見積書・請求書）
-- [igentrade-nohin-ryoshu](../igentrade-nohin-ryoshu/)（納品書・領収書）
-- [igentrade-shohizei](../igentrade-shohizei/)（消費税計算）
-- [igentrade-kawase](../igentrade-kawase/)（為替・概算コスト）
+## 関連ツール（iGenTrade 無料）
+
+- [見積書・請求書](https://github.com/igentrade/igentrade-seikyu) — https://igentrade.github.io/igentrade-seikyu/
+- [納品書・領収書](https://github.com/igentrade/igentrade-nohin-ryoshu) — https://igentrade.github.io/igentrade-nohin-ryoshu/
+- [消費税計算機](https://github.com/igentrade/igentrade-shohizei) — https://igentrade.github.io/igentrade-shohizei/
+- [為替・概算コスト](https://github.com/igentrade/igentrade-kawase) — https://igentrade.github.io/igentrade-kawase/
+- [営業日計算機](https://github.com/igentrade/igentrade-eigyobi) — https://igentrade.github.io/igentrade-eigyobi/
 
 ## ライセンス
 
